@@ -2,7 +2,7 @@ class Model:
     def __init__(self):
         self.data: float = 5
 
-    def get_data(self):
+    def get_data(self) -> float:
         print("                 |                  | [M] get_data()")
         return self.data
 
