@@ -23,11 +23,11 @@ classDiagram
         on_select(float)
     }
     class Presenter {
-        -model: Model
-        -view: ViewInterface
-        +Presenter(Model, ViewInterface)
-        +on_click()
-        +on_select(float)
+        model: Model
+        view: ViewInterface
+        Presenter(Model, ViewInterface)
+        on_click()
+        on_select(float)
     }
 
     class ViewInterface {
@@ -37,23 +37,23 @@ classDiagram
         get_value() float
     }
     class View {
-        -root: tk.Tk
-        -presenter: PresenterInterface
-        +View(tk.Tk)
-        +setup(PresenterInterface)
-        +set_value(float)
-        +get_value() float 
+        root: tk.Tk
+        presenter: PresenterInterface
+        View(tk.Tk)
+        setup(PresenterInterface)
+        set_value(float)
+        get_value() float 
     }
 
     class Model {
-        -data: float
-        +set_data(float)
-        +get_data() float
+        data: float
+        set_data(float)
+        get_data() float
     }
 
-    PresenterInterface --o View : Aggregation
+    PresenterInterface <.. View : Use
     ViewInterface <|.. View : Implementation
-    ViewInterface --o Presenter : Aggregation
+    ViewInterface <.. Presenter : Use
     PresenterInterface <.. ViewInterface : Use
     PresenterInterface <|.. Presenter : Implementation
     Model --o Presenter : Aggregation
